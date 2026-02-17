@@ -17,14 +17,14 @@
   fetchFromGitHub,
   zlib,
   abc-namespace-name ? "abc",
-  rev ? "ef5389d31526003c2ebd7e6d6d6fe3848a20f0a2",
-  sha256 ? "sha256-7W66b1Toa9uEAKoijPujqQXVjxf1Ku4w2eP2Vk0ri8c=",
+  rev ? "712b5fa144cceb939179a8d07befedfbf2895e08",
+  sha256 ? "sha256-3bgvh/AY2R723lQTYmjyOMvYN/jD0VkQgN20J673nh8=",
 }:
 abc-verifier.overrideAttrs (finalAttrs: previousAttrs: {
   name = "openroad-abc";
 
   src = fetchFromGitHub {
-    owner = "The-OpenROAD-Project";
+    owner = "robtaylor";
     repo = "abc";
     inherit rev;
     inherit sha256;
