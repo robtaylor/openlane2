@@ -1,0 +1,28 @@
+From 04312d7e14d95efe49f27061dda49f87eaed8cbf Mon Sep 17 00:00:00 2001
+From: Eder Monteiro <emrmonteiro@precisioninno.com>
+Date: Wed, 23 Oct 2024 11:40:29 -0300
+Subject: [PATCH] rsz: allow negative hold and setup margins
+
+Backport of The-OpenROAD-Project/OpenROAD@04312d7e14d9.
+Allows repair_timing -hold_margin and -setup_margin to accept
+negative values, enabling users to skip minor hold violations
+(e.g., -hold_margin -0.5 means "only fix violations worse than
+-0.5ns").
+
+Signed-off-by: Eder Monteiro <emrmonteiro@precisioninno.com>
+---
+ src/rsz/src/Resizer.tcl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rsz/src/Resizer.tcl b/src/rsz/src/Resizer.tcl
+--- a/src/rsz/src/Resizer.tcl
++++ b/src/rsz/src/Resizer.tcl
+@@ -655,7 +655,7 @@ proc parse_margin_arg { key keys_var } {
+   set margin 0.0
+   if { [info exists keys($key)] } {
+     set margin $keys($key)
+-    sta::check_positive_float $key $margin
++    sta::check_float $key $margin
+   }
+   return $margin
+ }

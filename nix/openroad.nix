@@ -62,6 +62,7 @@
     
     patches = [
       ./patches/openroad/6743.patch
+      ./patches/openroad/negative-margins.patch
     ];
 
     cmakeFlagsAll = [
